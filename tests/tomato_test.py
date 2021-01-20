@@ -1,4 +1,4 @@
-from src.gardener.models.vegetables.tomato import Tomato
+from src.gardener.models import Tomato
 
 class TestTomato:
 

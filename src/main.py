@@ -1,5 +1,4 @@
-from gardener.models.garden import Garden
-from gardener.models.vegetables.tomato import Tomato
+from gardener.models import Garden, Tomato
 
 my_garden = Garden()
 
