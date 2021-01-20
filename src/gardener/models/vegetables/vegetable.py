@@ -12,21 +12,30 @@ class Vegetable(ABC):
 
     @property
     def is_seed(self) -> bool:
+        """
+        Retourne la valeur indicant si le légume est à l'état de graine ou non
+        """
         return self._current_step == LifeSteps.Seed
 
     @property
     def water_level(self) -> int:
+        """
+        Retour le niveau d'eau actuel
+        """
         return self._water_level
 
     @property
     def current_step(self) -> LifeSteps:
+        """
+        Retour l'étape actuelle du légume (graine, adulte, fleur ou fruit)
+        """
         return self._current_step
 
     @property
     @abstractmethod
     def _water_level_before_next_step(_) -> int:
         """
-        Niveau d'eau requis pour ne plus être une graine
+        Niveau d'eau requis pour passer à la prochaine étape
         """
         raise NotImplementedError
 
