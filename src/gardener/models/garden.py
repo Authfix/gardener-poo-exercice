@@ -1,5 +1,7 @@
 from typing import List
 
+from .vegetables.vegetable import Vegetable
+
 
 class Garden():
     """
@@ -7,11 +9,16 @@ class Garden():
     """
     
     def __init__(self) -> None:
-        self._parcels: List[str] = []
+        self._parcels: List[Vegetable] = []
 
     @property
     def parcels(self):
         return self._parcels.copy()
 
-    def plant_seed(self, seed: str) -> None:
-        self._parcels.append(seed)
+    def plant_seed(self, seed: Vegetable) -> bool:
+
+        if seed.is_seed:
+            self._parcels.append(seed)
+            return True
+            
+        return False
