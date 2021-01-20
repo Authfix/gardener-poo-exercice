@@ -1,16 +1,26 @@
 from abc import ABC, abstractmethod
 
+from .life_step import LifeSteps
+
 class Vegetable(ABC):
     
     def __init__(self) -> None:
         super().__init__()
 
+        self._current_step = LifeSteps.Seed
         self._water_level = 0
-        self._is_seed = True
 
     @property
     def is_seed(self) -> bool:
-        return self._is_seed
+        return self._current_step == LifeSteps.Seed
+
+    @property
+    def water_level(self) -> int:
+        return self._water_level
+
+    @property
+    def current_step(self) -> LifeSteps:
+        return self._current_step
 
     @property
     @abstractmethod
@@ -27,5 +37,6 @@ class Vegetable(ABC):
         self._water_level += number_of_liters
 
         if self._water_level > self._water_level_before_next_step:
-            self._is_seed = False
+            self._water_level = 0
+            self._current_step = LifeSteps(self._current_step.value + 1)
 
